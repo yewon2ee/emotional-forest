@@ -1,5 +1,8 @@
-import React , {useState} from "react";
+
+import React from 'react'
 import Input from "../components/common/Input";
+import Header from '../components/common/Header';ㅍ
+
 
 const NicknameSettingPage = () => {
   //useState 는 리액트에 이값 바꾸면 화면도 바꿔주랑 
@@ -7,6 +10,12 @@ const NicknameSettingPage = () => {
 
   return (
     <div>
+      <Header
+        title='숲 주민 등록'
+        showBack={false}
+        showEdit={false}
+      />
+   
       <h2>닉네임 설정</h2>
       <Input
         value={nickname}
