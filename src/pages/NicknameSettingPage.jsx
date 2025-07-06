@@ -1,7 +1,7 @@
 
 import React from 'react'
 import Input from "../components/common/Input";
-import Header from '../components/common/Header';ㅍ
+import Header from '../components/common/Header';
 
 
 const NicknameSettingPage = () => {
