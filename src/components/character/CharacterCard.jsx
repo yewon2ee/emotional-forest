@@ -2,6 +2,7 @@
 //props: 이미지, 이름,선택 여부, onClick (클릭시 실행되는 함수)
 
 import React from 'react';
+import "../../styles/CharacterCard.css";
 
 const CharacterCard = ({ image, name, isSelected, onClick }) => {
   return (

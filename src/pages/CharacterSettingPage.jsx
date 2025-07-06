@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useState} from 'react';
 import CharacterGrid from '../components/character/CharacterGrid';
 import "../styles/CharacterGrid.css";
 
@@ -70,7 +70,7 @@ const CharacterSettingPage = () => {
 
       {/* 캐릭터 선택 그리드  */}
       <CharacterGrid
-        characters={characters}
+        characters={character}
         selectedCharacter={selectedCharacter}
         onSelect={handleSelectCharacter}
       />
@@ -85,9 +85,9 @@ const CharacterSettingPage = () => {
           )
         }
       >
-        선택된 캐릭터 확인
+        선택된 캐릭터 확인 
       </button>
-      
+      <h3>프로필 아이콘 미리보기는 안넣엇음 아직. 안할거같아서 선택한 카드 id 로그 잘찍힘 </h3>
     </div>
   )
 } 
