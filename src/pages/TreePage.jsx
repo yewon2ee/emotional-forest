@@ -1,9 +1,11 @@
 import React from 'react'
+import BottomNav from '../components/common/BottomNav';
 
 const TreePage = () => {
   return (
     <div>
-      나무 상세 페이지
+      나무 페이지 입니다
+      <BottomNav/>
     </div>
   )
 }
