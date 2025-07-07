@@ -1,0 +1,28 @@
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-back-btn,
+.header-edit-btn {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-title {
+  text-align: center;
+}
+
+.header-btn {
+  background: lightgreen;
+  border: none;
+}
+
+.back-icon,
+.pencil-icon {
+  width: 20px;
+  color: white;
+}

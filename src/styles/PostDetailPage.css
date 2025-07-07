@@ -1,0 +1,25 @@
+.post-detail-page {
+    background-color: #f0f8ff;
+    padding: 20px;
+    min-height: 100vh;
+  }
+  
+  .post-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .post-date-location {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .post-nickname {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  

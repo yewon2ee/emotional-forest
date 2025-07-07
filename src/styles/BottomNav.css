@@ -1,0 +1,12 @@
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: lightgray;
+}
+
+.setting-icon, .home-icon, .user-icon{
+    width: 30px;
+}
