@@ -1,0 +1,8 @@
+.profile-icon {
+    width: 60px; /* 프로필 아이콘 크기 */
+    height: 60px;
+    border-radius: 50%; /* 동그랗게 */
+    object-fit: cover;
+    border: 2px solid #00cc66; /* 초록 테두리 */
+  }
+  
