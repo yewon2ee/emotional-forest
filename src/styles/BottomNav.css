@@ -3,10 +3,21 @@
     justify-content: space-around;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 430px;
+    height: 45px;
     background-color: lightgray;
 }
 
 .setting-icon, .home-icon, .user-icon{
     width: 30px;
+    height: 30px;
+    color:black;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.setting-icon:hover,
+.home-icon:hover,
+.user-icon:hover{
+    color: gray;
 }

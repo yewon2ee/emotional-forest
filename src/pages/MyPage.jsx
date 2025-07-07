@@ -2,8 +2,8 @@ import React from 'react'
 import BottomNav from '../components/common/BottomNav';
 import MyTreeList from '../components/mypage/MyTreeList';
 
-import apple from "../assets/fruit/apple.png"
-import cherry from '../assets/fruit/cherry.png'
+import apple from "/assets/fruit/apple.png"
+import cherry from '/assets/fruit/cherry.png'
 /*테스트용 더미 데이터- API 연동 전이니까*/
 const dummyData = [
   { id: 1, image: apple},
