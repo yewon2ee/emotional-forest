@@ -1,0 +1,23 @@
+.tree-container {
+    position: relative;
+    width: 200px; /* 트리 이미지 실제 폭 고정 */
+    margin: 0 auto;
+    margin-top: 100px;
+
+  }
+  
+  .tree {
+    width: 100%;
+    display: block;
+  }
+  
+  .apple {
+    position: absolute;
+    width: 40px; /* 사과 크기 축소 */
+  }
+  
+  /* 사과 위치 목업처럼 조정 */
+  .apple1 { top: 20px; left: 80px; }
+  .apple2 { top: 80px; left: 30px; }
+  .apple3 { top: 80px; left: 130px; }
+  
