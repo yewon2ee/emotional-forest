@@ -1,0 +1,23 @@
+/* 나무 이미지 wrapper */
+.tree-img-wrapper {
+  text-align: center;
+  padding: 10px;
+}
+
+.post-list {
+  padding: 6px 12px;
+  background-color: lightyellow;
+}
+
+.post-list:hover {
+  background-color: #f0f0f0;
+}
+
+.apple {
+  width: 20px;
+}
+
+/* 잎사귀(체리) */
+.leaf {
+  width: 20px;
+}
