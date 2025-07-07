@@ -12,7 +12,7 @@ const CharacterSettingPage = () => {
     { id: 3, name: "친절한 골렘", img: "/assets/characters/kind_golem.png" },
     { id: 4, name: "행복한 숲지기", img: "/assets/characters/forest_keeper.png" },
     { id: 5, name: "마동석냥이", img: "/assets/characters/cat.png" },
-    { id: 6, name: "츤데레숲마법사", img: "/assets/characters/magician.png" },
+    { id: 6, name: "츤데레 숲마법사", img: "/assets/characters/magician.png" },
     { id: 7, name: "행복한 인삼", img: "/assets/characters/ginseng.png" },
     { id: 8, name: "서있는 상어", img: "/assets/characters/shark.png" },
     { id: 9, name: "뛰어다니는 사람", img: "/assets/characters/running_person.png" },

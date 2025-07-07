@@ -1,10 +1,9 @@
-import React from 'react'
+import React from 'react';
 import { BackspaceIcon, PencilIcon } from "@heroicons/react/24/outline";
 import "/src/styles/Header.css"
 
 const Header = ({
-    // showBack과 showEdit = false이면 버튼이 안보이고 true이면 보임
-    title="",
+    title = "",
     showBack = false,
     showEdit = false,
     onBackClick,
