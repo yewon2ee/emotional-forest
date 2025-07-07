@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BottomNav from '../components/common/BottomNav';
+import "../styles/HomePage.css"; // css import
 
 const HomePage = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const script = document.createElement("script");
     script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${import.meta.env.VITE_NAVER_MAP_CLIENT_ID}`;
@@ -21,20 +25,19 @@ const HomePage = () => {
     };
   }, []);
 
+  const handleTreeClick = () => {
+    navigate('/tree');
+  };
+
   return (
-    <div style={{ position: "relative", height: "100vh" }}>
-      <div id="map" style={{ width: "100%", height: "90vh" }}></div>
+    <div className="home-container">
+      <div id="map" className="map"></div>
 
       <img
         src="/assets/tree_objects/summer.png"
         alt="나무"
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -100%)",
-          width: "80px",
-        }}
+        onClick={handleTreeClick}
+        className="tree-image"
       />
 
       <BottomNav />
