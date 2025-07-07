@@ -1,9 +1,0 @@
-
-.character-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3열 그리드 */
-    gap: 12px;
-    justify-items: center; /* 각 카드 중앙 정렬 */
-    padding: 16px;
-  }
-  

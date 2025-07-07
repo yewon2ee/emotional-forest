@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/IntroPage.css";
 import Button from "../components/common/Button";
-import { useBeforeUnload, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 const IntroPage = () => {
 
