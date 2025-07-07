@@ -1,0 +1,20 @@
+.post-content {
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .post-nickname {
+    font-weight: bold;
+  }
+  
+  .post-date {
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .post-content p {
+    margin-top: 8px;
+  }
+  

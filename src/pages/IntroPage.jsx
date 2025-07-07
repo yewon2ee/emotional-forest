@@ -1,37 +1,30 @@
 import React from "react";
+import "../styles/IntroPage.css";
 import Button from "../components/common/Button";
-import Toggle from "../components/common/Toggle";
+import { useBeforeUnload, useNavigate } from "react-router-dom";
 
 const IntroPage = () => {
 
-   // 클릭 시 실행되는 테스트 함수
-   const handleClick = () => {
-    alert("버튼이 클릭되었습니다!");
-  };
+  const navigate = useNavigate ();
 
-  const handleToggle = (state) => {
-    console.log('현재 토글 상태:',state);
-  };
+  const handleStartClick = () => {
+    const profile = localStorage.getItem("profile"); //저장된 키명에 맞춰서 수정해야함
+    if(profile){
+      navigate("/home");
+    }else {
+      navigate("/profile")
+    }
+  }
 
   return (
-    <div>
-      <h1>IntroPage</h1>
-
-      {/* 버튼 테스트 */}
-      <Button 
-        text="테스트 버튼" 
-        onClick={handleClick}
-      />
-      <div><p>""</p></div>
-
-      {/*토글 테스트*/}
-      <Toggle
-        onToggle={handleToggle}/>
-
-
+    <div className="intro-container">
+      <div className="overlay">
+        <img src="/assets/logo/logo.png" alt="로고" className="intro-logo" />
+        <p className="intro-subtitle">공간 위에 남겨진<br/>감정의 발자국</p>
+        <Button text="시작하기" onClick={handleStartClick} />
+      </div>
     </div>
   );
-
 };
 
 export default IntroPage;

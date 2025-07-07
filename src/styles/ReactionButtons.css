@@ -1,0 +1,41 @@
+.intro-container {
+    width: 100%;
+    height: 100vh; /* 모바일 전체 화면 */
+    background-image: url("/assets/etc/background.JPG");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .overlay {
+    text-align: center;
+  }
+  
+  .intro-logo {
+    width: 250px;
+    margin-bottom: 20px;
+  }
+  
+  .intro-subtitle {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 30px;
+  }
+  
+  .intro-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 18px;
+    box-shadow: 0 4px #388e3c;
+  }
+  
+  .intro-button:active {
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+  
