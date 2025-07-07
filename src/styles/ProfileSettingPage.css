@@ -5,7 +5,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 40px;
+    padding-top: 0px;
+    justify-content: center; /* 추가: 세로 중앙 정렬 */
+
   }
   
   h2 {
@@ -15,8 +17,8 @@
   
   .card {
     background: #fffbe0;
-    width: 70%;
-    height: 500px;
+    width: 75%;
+    height: 480px;
     border-radius: 20px;
     padding: 40px 20px;
     text-align: center;
