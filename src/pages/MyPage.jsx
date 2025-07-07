@@ -1,14 +1,14 @@
-import React from 'react'
+import React from 'react';
 import BottomNav from '../components/common/BottomNav';
 import MyTreeList from '../components/mypage/MyTreeList';
 
-import apple from "../assets/fruit/apple.png"
-import cherry from '../assets/fruit/cherry.png'
+
 /*테스트용 더미 데이터- API 연동 전이니까*/
 const dummyData = [
-  { id: 1, image: apple},
-  { id: 2, image: cherry},
+  { id: 1, image: "/assets/fruit/apple.png" },
+  { id: 2, image: "/assets/fruit/cherry.png" },
 ];
+
 
 const MyPage = () => {
   //각각의 나무를 클릭-> 콘솔 출력 (페이지로 이동하는 함수는 아직 안함)
