@@ -47,8 +47,8 @@ const SettingPage = () => {
 
       {/*alert문은 백엔드와 연결하고 console.log로 수정하기*/}
       <div className='button-group'>
-        <Button text='수정'   onClick={() => alert("수정 버튼을 클릭하였습니다")}/>
-        <Button text="저장"  onClick={() => alert("저장 버튼을 클릭하였습니다")}/>
+        <Button text='수정'  className="setting-button" onClick={() => alert("수정 버튼을 클릭하였습니다")}/>
+        <Button text="저장"  className="setting-button" onClick={() => alert("저장 버튼을 클릭하였습니다")}/>
       </div>
       
       <BottomNav/>
