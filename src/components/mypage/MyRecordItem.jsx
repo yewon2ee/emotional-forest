@@ -8,7 +8,7 @@ const MyRecordItem = ({image, onClick}) => {
         className='my-record-item'
         onClick={onClick} //postDetailpage로 이동하는 클릭 이벤트
     >
-      <img src={image} alt="나무" /> {/*출력할 이미지 props로 전달*/}
+      <img src={image} alt="나무" className='tree-img'/> {/*출력할 이미지 props로 전달*/}
     </div>
   )
 }

@@ -19,9 +19,11 @@
   justify-content: center;
 }
 
+/*
 .header-title {
-  display: none; /* 타이틀 숨김 (필요하면 유지) */
+  display: none; /* 타이틀 숨김 (필요하면 유지) 
 }
+  */
 
 .header-btn {
   background: lightgreen;
