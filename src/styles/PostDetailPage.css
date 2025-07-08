@@ -8,68 +8,82 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  padding-top: 150px; /* 상단 여백 */
 }
 
 .post-header {
   text-align: center;
-  margin-bottom: 30px;
-  margin-top: 70px;
-  width: 330px;
+  margin-bottom: 10px;
 }
 
 .post-header img.post-charactr {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  border-radius: 40%;
   background-color: #FEFCE7;
-  padding: 5px;
+  padding: 12px;
 }
 
 .post-data-area {
-  margin-top: 30px;
-  padding: 13px 30px;
-  background-color: #FEFCE7;
+  margin-top: 20px;
+  padding: 8px 20px;
+  background-color: #dddddd;
   border-radius: 10px;
-  font-size: 15px;
-  display: flex;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
   justify-content: center;
+  gap: 5px;
 }
 
 .post-content-area {
   background-color: #FEFCE7;
-  padding: 15px 30px;
+  padding: 30px;
   border-radius: 20px;
-  width: 80%;
-  min-height: 300px;
-  width: 330px;
+  width: 300px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  min-height: 250px;
 }
 
+.post-content-box {
+  width: 100%;
+}
 
-.post-content-area .post-nickname {
+.post-nickname {
   background-color: #ffd700;
   font-weight: bold;
-  padding: 5px 10px;
-  border-radius: 30px;
+  padding: 5px 15px;
+  border-radius: 20px;
   display: inline-block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  margin-left: 0px; /* 필요시 명시적으로 추가 */
 }
 
-.post-content-area .post-content {
-  font-size: 14px;
-  line-height: 24px;
-  margin-top: 5px;
-  padding-top: 5px;
-  border-bottom: 1px dashed #ccc;
+.post-content {
+  font-size: 15px;
+  margin-left: 3px;
+  line-height: 25px; /* 가독성 좋은 줄간격 */
+  padding-bottom: 10px;
+  margin-top: 10px;
+  white-space: normal; /*  데이터 \n 없이도 자동 줄바꿈 */
+  word-break: break-word; /* 긴 단어도 줄바꿈 */
 }
 
 .post-btn {
   margin-top: 20px;
-  border-radius: 20px;
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
+}
+
+.reaction-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 .reaction-buttons button {
@@ -77,15 +91,12 @@
   color: #fff;
   border: none;
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 10px 25px;
   font-size: 14px;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   align-items: center;
-  min-width: 100px;
   justify-content: center;
+  gap: 10px;
 }
 
-.reaction-buttons button:hover {
-  background-color: #ffd700;
-}

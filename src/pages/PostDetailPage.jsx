@@ -1,11 +1,10 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PostContent from '../components/post/PostContent';
 import ReactionButtons from '../components/post/ReactionButtons';
 import BottomNav from "../components/common/BottomNav";
 import Header from '../components/common/Header';
-import { useNavigate } from 'react-router-dom';
-import "../styles/PostDetailPage.css"
+import "../styles/PostDetailPage.css";
 
 const dummyPosts = [
   { id: 1, 
@@ -16,7 +15,6 @@ const dummyPosts = [
     location: "인하대학교",
     characterImage: "/assets/characters/stone.png"
   },
-
   { id: 2, 
     content: "해커톤을 무사히 끝내고 싶다. 해커톤을 무사히 끝내고 싶다. 해커톤을 무사히 끝내고 싶다.", 
     likes: 10, 
@@ -25,7 +23,6 @@ const dummyPosts = [
     location: "인하대학교 하이테크",
     characterImage: "/assets/characters/stone.png"
   },
-
   { id: 3, 
     content: "끝나면 진짜 방학을 즐겨야지", 
     likes: 5, 
@@ -43,41 +40,37 @@ const PostDetailPage = () => {
 
   if (!post) return <div>해당 글을 찾을 수 없습니다.</div>;
 
-  const handleLike = () => {
-    alert("Like 버튼 누름")
-  }
-
-  const handleCheer = () => {
-    alert("Cheer 버튼 누름")
-  }
+  const handleLike = () => alert("Like 버튼 누름");
+  const handleCheer = () => alert("Cheer 버튼 누름");
 
   return (
     <div className='post-detail-page'>
       <Header
         showBack={true}
         showEdit={true}
-        onBackClick={() => navigate(-1)} // 뒤로가기
-        onEditClick={() => navigate("/post/create")} // 글 작성 페이지
+        onBackClick={() => navigate(-1)}
+        onEditClick={() => navigate("/post/create")}
       />
+
       <div className='post-header'>
         <img src={post.characterImage} alt="캐릭터" className='post-charactr' />
-        <p className='post-data-area'>
-          {post.date} 📍 {post.location}
-        </p>
+      
       </div>
+      <div className='post-data-area'>
+          <span>{post.date}</span>
+          <span>📍</span>
+          <span>{post.location}</span>
+        </div>
 
       <div className='post-content-area'>
-        <PostContent nickname={post.nickname} date={post.date} content={post.content} />
-        
+        <PostContent nickname={post.nickname} content={post.content} />
+
         <div className='post-btn'>
           <ReactionButtons onLike={handleLike} onCheer={handleCheer} />
         </div>
-      
       </div>
 
-
       <BottomNav/>
-
     </div>
   );
 };
