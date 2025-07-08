@@ -1,0 +1,83 @@
+.header-title {
+  font-size: 36px;
+  text-align: center;
+  margin: 20px 0;
+  color: #265558;
+}
+
+/* 나무 + 잔디 영역 */
+.tree-area {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 20px 0;
+}
+
+.grass-img {
+  width: 350px;
+  height: auto;
+  justify-content: center;
+}
+
+.tree-list-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  z-index: 2;
+}
+
+/* 나무 리스트 내부 */
+.my-tree-list {
+  display: flex;
+  flex-direction: row; /* 가로로 배치 */
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+}
+
+.my-record-item img {
+  width: 80px;
+  height: auto;
+}
+
+
+
+
+
+
+
+.mypage {
+  width: 430px;
+  min-height: 100vh;
+  background: linear-gradient(#dff6ff 60%, #e0ffe0 40%);
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats-number {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.stats-text {
+  font-size: 12px;
+}
