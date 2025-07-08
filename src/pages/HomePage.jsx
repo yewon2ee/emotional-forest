@@ -24,6 +24,11 @@ const HomePage = () => {
       const mapOptions = {
         center: new window.naver.maps.LatLng(37.450701, 126.653256), // 인하대 정확 좌표
         zoom: 16,
+        draggable: false,         // 드래그 비활성화
+        pinchZoom: false,         // 터치 확대/축소 비활성화
+        scrollWheel: false,       // 마우스 휠 비활성화 => 즉, 지도를 고정함
+        disableDoubleTapZoom: true,
+        disableDoubleClickZoom: true,
       };
       new window.naver.maps.Map('map', mapOptions);
     };
