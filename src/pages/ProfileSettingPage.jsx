@@ -2,6 +2,10 @@ import React from 'react'
 import "../styles/ProfileSettingPage.css";
 import { useNavigate } from 'react-router-dom';
 
+//프로필 세팅 페이지 
+// 중간 허브 페이지여서 클릭시 캐릭터 세팅 페이지로 이동됨
+// 백엔드 요청할 거 없음 네비게이트만 수행
+
 const ProfileSettingPage = () => {
   const navigate = useNavigate ();
 
