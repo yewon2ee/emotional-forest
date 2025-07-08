@@ -2,13 +2,26 @@ import React from "react";
 import "../styles/IntroPage.css";
 import Button from "../components/common/Button";
 import {useNavigate } from "react-router-dom";
+import {v4 as uuidv4} from "uuid";
+
+//intropage- uuid 생성 후 로컬 스토리지 저장 -> 별도 api 호출 없음
+//완료
+
 
 const IntroPage = () => {
 
   const navigate = useNavigate ();
 
   const handleStartClick = () => {
-    const profile = localStorage.getItem("profile"); //저장된 키명에 맞춰서 수정해야함
+
+    // UUID가 없으면 생성 후 저장
+    let userId = localStorage.getItem("userId");
+    if (!userId) {
+      userId = uuidv4();
+      localStorage.setItem("userId", userId);
+    }
+    // 프로필 존재 여부에 따라 분기
+    const profile = localStorage.getItem("profile"); 
     if(profile){
       navigate("/home");
     }else {
