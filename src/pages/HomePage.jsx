@@ -6,7 +6,7 @@ import "../styles/HomePage.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  const [tree, setTree] = useState(null); // 트리 데이터 state 추가
+  const [tree, setTree] = useState(null); //  트리 데이터 state 추가
 
   useEffect(() => {
     console.log("NAVER_MAP_CLIENT_ID:", import.meta.env.VITE_NAVER_MAP_CLIENT_ID);
@@ -18,7 +18,7 @@ const HomePage = () => {
 
     script.onload = async () => {
       try {
-        // 트리 조회 API 호출
+        //  트리 조회 API 호출
         const res = await axios.get('/trees');
         console.log("트리 조회 성공:", res.data);
 
@@ -48,7 +48,7 @@ const HomePage = () => {
           },
         });
 
-        // 마커 클릭 시 트리 페이지로 이동
+        //  마커 클릭 시 트리 페이지로 이동
         window.naver.maps.Event.addListener(marker, 'click', () => {
           navigate('/tree');
         });
