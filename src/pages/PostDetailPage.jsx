@@ -50,7 +50,7 @@ const PostDetailPage = () => {
   return (
     <div>
       <h1>게시글 상세 페이지</h1>
-      <p>작성자: {post.user_id}</p>
+      <p>작성자: {post.user_name}</p>
       <p>내용: {post.content}</p>
       <p>작성일: {post.created_at}</p>
       <button onClick={() => navigate(-1)}>뒤로가기</button>
