@@ -1,19 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BottomNav from '../components/common/BottomNav';
-import Button from '../components/common/Button';
 import Toggle from '../components/common/Toggle';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from '../api/instance';
 import "../styles/PostCreatePage.css";
 
 const PostCreatePage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const treeId = location.state?.treeId;  
-
-  const today = new Date().toISOString().split('T')[0];
   const [content, setContent] = useState('');
   const [isPrivate, setIsPrivate] = useState(false);
+  const [treeId, setTreeId] = useState(null);
+
+  useEffect(() => {
+    const fetchTree = async () => {
+      console.log("🌳 fetchTree 실행됨");
+  
+      try {
+        const res = await axios.get('/trees');
+        console.log("✅ 글쓰기용 트리 조회 성공:", res.data);
+  
+        if (Array.isArray(res.data) && res.data.length > 0) {
+          const tree = res.data[0];
+          console.log("🌳 선택된 tree_id:", tree.tree_id);
+          setTreeId(tree.tree_id);
+        } else {
+          console.warn("⚠️ 트리 응답이 배열이 아님 또는 비어있음:", res.data);
+          alert("트리 정보가 없습니다. 다시 시도해주세요.");
+          navigate("/tree");
+        }
+      } catch (err) {
+        console.error("❌ 트리 조회 실패:", err);
+        alert("트리 정보를 불러올 수 없습니다.");
+        navigate("/tree");
+      }
+    };
+  
+    fetchTree();
+  }, [navigate]);
+  
+
+  const today = new Date().toISOString().split('T')[0];
 
   const handleSave = async () => {
     if (!treeId) {
@@ -22,19 +48,20 @@ const PostCreatePage = () => {
     }
 
     const postData = {
-      tree_id: treeId, // 수정 완료
+      tree_id: treeId,
       content: content,
       is_private: isPrivate,
     };
-    
+
+    console.log("📝 저장 요청 데이터:", postData);
+
     try {
       const res = await axios.post("/posts/posts", postData);
-      console.log("저장 성공:", res.data);
-
+      console.log("✅ 저장 성공:", res.data);
       alert("저장되었습니다!");
       navigate("/tree");
     } catch (err) {
-      console.error("저장 실패:", err);
+      console.error("❌ 저장 실패:", err);
       alert("저장에 실패했습니다. 다시 시도해주세요.");
     }
   };
@@ -57,21 +84,23 @@ const PostCreatePage = () => {
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
 
-        <div className='footer'>
-          <div className='toggle'>
+        <div className='footer-combined'>
+          <div className='toggle-combined'>
             <Toggle onToggle={setIsPrivate} />
             <span className='toggle-text'>비공개</span>
           </div>
-          <Button 
-            className='custom-button post-create-save-btn' 
-            onClick={handleSave} 
-            text="저장" 
-          />
+          <button
+            className='post-create-save-btn'
+            onClick={handleSave}
+          >
+            저장
+          </button>
         </div>
       </div>
-      <BottomNav/>
+
+      <BottomNav />
     </div>
-  )
-}
+  );
+};
 
 export default PostCreatePage;

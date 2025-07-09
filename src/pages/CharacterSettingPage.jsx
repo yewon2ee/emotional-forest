@@ -7,17 +7,18 @@ const CharacterSettingPage = () => {
   const navigate = useNavigate();
 
   const [selectedCharacter, setSelectedCharacter] = useState(null);
-  const [characters, setCharacters] = useState([]);
+  const [characters, setCharacters] = useState([]); // ✅ 빈 배열로 초기화
 
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
         const response = await instance.get("/users/signup/characters");
         console.log("캐릭터 목록 GET 성공:", response.data);
-        setCharacters(response.data); // 수정: data.data → data
+        setCharacters(response.data || []); // ✅ 응답 없을 시 빈 배열
       } catch (error) {
         console.error("캐릭터 목록 GET 실패:", error);
         alert("캐릭터 목록을 불러오지 못했습니다.");
+        setCharacters([]); // 실패 시도 빈 배열
       }
     };
 
@@ -36,19 +37,20 @@ const CharacterSettingPage = () => {
     }
 
     const profile = JSON.parse(localStorage.getItem("profile")) || {};
-    profile.characterId = selectedCharacter;
 
     const selectedChar = characters.find(c => c.character_id === selectedCharacter);
-    if (selectedChar) {
-      profile.characterImgUrl = selectedChar.image_url;
-    }
 
-    localStorage.setItem("profile", JSON.stringify(profile));
-    console.log("로컬스토리지에 캐릭터 저장 완료:", profile);
+    const newProfile = {
+      ...profile,
+      characterId: selectedCharacter,
+      characterImgUrl: selectedChar ? selectedChar.image_url : profile.characterImgUrl,
+    };
+
+    localStorage.setItem("profile", JSON.stringify(newProfile));
+    console.log("로컬스토리지에 캐릭터 저장 완료:", newProfile);
 
     navigate("/profile/nickname");
   };
-
   return (
     <div className="character-container">
       <h2>🌿 캐릭터 설정</h2>
@@ -69,6 +71,7 @@ const CharacterSettingPage = () => {
       <button onClick={handleSave}>저장하기</button>
     </div>
   );
+ 
 };
 
 export default CharacterSettingPage;

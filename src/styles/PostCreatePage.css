@@ -8,7 +8,14 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-top: 150px;
+  padding-top: 250px;
+}
+
+img.leaf-icon {
+  position: absolute;
+  top: 180px;
+  width: 100px !important;
+  height: auto !important;
 }
 
 .create-header {
@@ -41,47 +48,71 @@
   border: none;
 }
 
-/* footer 추가 */
-.footer {
+
+.footer-combined {
   display: flex;
-  justify-content: space-between; /* 토글 왼쪽, 버튼 오른쪽 */
+  justify-content: space-between;
   align-items: center;
-  width: 100%; /* 80% → 100%로 변경 */
-  padding: 0 30px; /* 좌우 패딩 추가하여 여백 확보 */
-  margin-top: 20px;
+  background-color: #f0f0f0; /* 하나의 박스 배경 */
+  border-radius: 20px;
+  padding: 10px 20px;
+  width: 80%;
+  margin: 20px auto 0 auto; /* 위 margin + 중앙정렬 */
 }
 
-.toggle {
+.toggle-combined {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
+}
+
+.toggle-switch {
+  width: 50px;
+  height: 30px; /* 약간 줄여서 균형 */
+  background-color: #ccc;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  transition: background-color 0.3s;
+}
+
+.toggle-switch.on {
+  background-color: #4CAF50;
+}
+
+.toggle-knob {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle-switch.on .toggle-knob {
+  transform: translateX(20px);
 }
 
 .toggle-text {
   color: grey;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 30px; /* 높이 맞춤 */
 }
 
 .post-create-save-btn {
-  background-color: #00A000; /* 나뭇잎 색상 */
+  background-color: #00A000;
   color: white;
   font-size: 14px;
   width: 80px;
   height: 35px;
-  border-radius: 30px;
+  border-radius: 20px;
   text-align: center;
-  border: none; 
+  border: none;
   cursor: pointer;
-  padding: 0 !important;
+
+  display: flex; /* ✅ 추가 */
+  justify-content: center; /* ✅ 추가 */
+  align-items: center; /* ✅ 추가 */
+  line-height: normal; /* ✅ 불필요한 line-height 초기화 */
 }
-
-img.leaf-icon {
-  display: flex;
-  align-items: center;
-  width: 100px !important;
-  height: auto !important;
-  position: absolute;
-  top: 80px;
-}
-
-

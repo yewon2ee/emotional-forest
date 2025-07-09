@@ -10,40 +10,54 @@ import axios from '../api/instance';
 
 const TreePage = () => {
   const [posts, setPosts] = useState([]);
-  const [tree, setTree] = useState(null); // 🔧 트리 하나만 가져온다고 가정
+  const [tree, setTree] = useState(null);
   const navigate = useNavigate();
-  console.log("유저아이디:",localStorage.getItem("userId"));
 
-  //  트리 조회 함수 추가
+  console.log("🌳 TreePage 렌더링됨");
+
   const fetchTree = async () => {
     try {
       const res = await axios.get('/trees');
-      console.log("트리 조회 성공:", res.data);
-      setTree(res.data[0]); // 트리가 1개라면 [0]만 저장
+      console.log("✅ 트리 조회 성공:", res.data);
+      setTree(res.data[0]);
     } catch (err) {
-      console.error('트리 조회 실패', err);
+      console.error('❌ 트리 조회 실패', err);
     }
   };
 
-  //  게시물 조회 함수 (트리 id 기반 필터링 예정)
   const fetchPosts = async () => {
     try {
-      const userId = localStorage.getItem("userId"); // 수정: userId 가져오기
+      const userId = localStorage.getItem("userId");
+      console.log("📌 현재 userId (localStorage):", userId);
+
+      if (!userId) {
+        console.warn("⚠️ userId가 없습니다. IntroPage에서 생성 후 TreePage로 와야 합니다.");
+        alert("로그인 정보가 없어 Intro 페이지로 이동합니다.");
+        navigate("/");
+        return;
+      }
+
       const res = await axios.get('/posts/posts', {
         headers: {
-          "X-USER-ID": userId // 수정: 요청 헤더에 userId 추가
+          "X-USER-ID": userId
         }
       });
-      console.log("기록 조회 성공:", res.data);
+
+      console.log("✅ 전체 기록 조회 성공:", res.data);
       setPosts(res.data);
     } catch (err) {
-      console.error('전체 기록 조회 실패', err);
+      console.error('❌ 전체 기록 조회 실패', err);
+      if (err.response) {
+        console.error("🔴 서버 응답 상태:", err.response.status);
+        console.error("🔴 서버 응답 데이터:", err.response.data);
+      }
+      alert("게시글을 불러오지 못했습니다. 다시 시도해주세요.");
     }
   };
 
   useEffect(() => {
-    fetchTree(); //  트리 먼저 가져오기
-    fetchPosts(); 
+    fetchTree();
+    fetchPosts();
   }, []);
 
   const handleAppleClick = () => {
@@ -52,8 +66,17 @@ const TreePage = () => {
       return;
     }
     const randomPost = posts[Math.floor(Math.random() * posts.length)];
+    console.log("🍎 사과 클릭 - randomPost:", randomPost);
+  
+    if (!randomPost || !randomPost.post_id) {
+      console.error("❌ randomPost 또는 post_id가 없습니다.", randomPost);
+      alert("게시글 정보를 불러오지 못했습니다.");
+      return;
+    }
+  
     navigate(`/post/${randomPost.post_id}`);
   };
+  
 
   const handleSort = (type) => {
     let sorted;
@@ -73,10 +96,10 @@ const TreePage = () => {
         showBack={true}
         showEdit={true}
         onBackClick={() => navigate(-1)}
-        onEditClick={() => navigate("/post/create", { state: { treeId: tree?.tree_id } })} // 수정: treeId state로 전달
+        onEditClick={() => navigate("/post/create", { state: { treeId: tree?.tree_id } })}
       />
 
-      {tree ? ( // 트리 데이터 로딩 후 렌더링
+      {tree ? (
         <TreeImage
           onAppleClick={handleAppleClick}
           treeId={tree.tree_id}

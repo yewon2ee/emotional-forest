@@ -1,36 +1,23 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../styles/IntroPage.css";
 import { useNavigate } from "react-router-dom";
-import axios from "../api/instance";
 
 const IntroPage = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const initUser = async () => {
-      let userId = localStorage.getItem("userId");
-      if (!userId) {
-        // 서버에 user 생성 요청
-        try {
-          const res = await axios.post("/users/signup", {
-            avatar: "sunflower",
-            name: "익명의 토끼",
-          });
-          const { user_id, avatar, name } = res.data.data;
+  const handleStartClick = () => {
+    const userId = localStorage.getItem("userId");
 
-          // 저장
-          localStorage.setItem("userId", user_id);
-          localStorage.setItem("profile", JSON.stringify({ avatar, name }));
-          navigate("/profile");
-        } catch (err) {
-          console.error("유저 생성 실패", err);
-        }
-      } else {
-        navigate("/home");
-      }
-    };
-    initUser();
-  }, [navigate]);
+    if (!userId) {
+      // ✅ 회원정보 없으면 캐릭터 세팅 페이지로 이동
+      console.log("회원정보 없음 → 캐릭터 세팅 페이지로 이동");
+      navigate("/profile/character");
+    } else {
+      // ✅ 회원정보 있으면 홈으로 이동
+      console.log("회원정보 있음 → 홈으로 이동");
+      navigate("/home");
+    }
+  };
 
   return (
     <div className="intro-container">
@@ -41,6 +28,9 @@ const IntroPage = () => {
           <br />
           감정의 발자국
         </p>
+        <button className="start-btn" onClick={handleStartClick}>
+          시작하기
+        </button>
       </div>
     </div>
   );

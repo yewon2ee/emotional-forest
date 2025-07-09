@@ -25,7 +25,7 @@ const AppRoutes = () => {
           <Route path="/my" element={<MyPage />} />
           <Route path="/profile/nickname" element={<NicknameSettingPage />} />
           <Route path="/post/create" element={<PostCreatePage />} />
-          <Route path="/post/:id" element={<PostDetailPage  />} />
+          <Route path="/post/:postId" element={<PostDetailPage  />} />
           <Route path="/profile" element={<ProfileSettingPage />} />
           <Route path="/setting" element={<SettingPage />} />
           <Route path="/tree" element={<TreePage />} />
