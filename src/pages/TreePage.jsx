@@ -6,20 +6,30 @@ import Header from '../components/common/Header';
 import '../styles/TreePage.css';
 import '../styles/TreeImage.css';
 import '../styles/Header.css';
-
-const dummyPosts = [
-  { id: 1, content: "나는 오늘 개발만 했다", likes: 3, date: "2025-07-07" },
-  { id: 2, content: "해커톤을 무사히 끝내고 싶다. 해커톤을 무사히 끝내고 싶다. 해커톤을 무사히 끝내고 싶다.", likes: 10, date: "2025-07-05" },
-  { id: 3, content: "끝나면 진짜 방학을 즐겨야지", likes: 5, date: "2025-07-06" }
-];
+import axios from '../api/instance';
 
 const TreePage = () => {
-  const [posts, setPosts] = useState(dummyPosts);
+  const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+
+  // 전체 포스트
+  const fetchPosts = async () => {
+    try {
+      const res = await axios.get('/posts/posts');
+      console.log("기록 조회 성공:", res.data)
+      setPosts(res.data);
+    } catch (err) {
+      console.error('전체 기록 조회 실패', err);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const handleAppleClick = () => {
     const randomPost = posts[Math.floor(Math.random() * posts.length)];
-    alert(randomPost.content);
+    navigate(`/post/${randomPost.id}`);
   };
 
   const handleSort = (type) => {
