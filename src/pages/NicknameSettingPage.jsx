@@ -18,7 +18,7 @@ const NicknameSettingPage = () => {
   }, []);
 
   const handleSubmit = async () => {
-    if (nickname.trim() === "") {
+    if (nickname.trim() === "") {ㅌ
       alert("닉네임을 입력해보자!");
       return;
     }
@@ -51,7 +51,7 @@ const NicknameSettingPage = () => {
       alert("프로필이 생성되었습니다! 이제 감정의 숲을 즐겨보세요 🌳");
       navigate("/home");
     } catch (error) {
-      console.error("❌ 등록 실패:", error);
+      console.error(" 등록 실패:", error);
       alert("오류가 발생했습니다. 다시 시도해주세요.");
     }
   };

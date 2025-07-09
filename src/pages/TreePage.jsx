@@ -8,6 +8,9 @@ import '../styles/TreeImage.css';
 import '../styles/Header.css';
 import axios from '../api/instance';
 
+// 전체 게시물 조회 해오고 나서 프론트에서 랜덤인덱스 네비게이트 -> 게시물 적어서 그냥 이렇게 하기로함
+// 게시물 하나도 없을때를 고려하여 조건문 추가함
+
 const TreePage = () => {
   const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
@@ -24,12 +27,16 @@ const TreePage = () => {
   };
 
   useEffect(() => {
-    fetchPosts();
+    fetchPosts(); 
   }, []);
 
   const handleAppleClick = () => {
+    if (posts.length === 0) {
+      alert("게시물이 없습니다."); // 사용자에게 알림
+      return;
+    }
     const randomPost = posts[Math.floor(Math.random() * posts.length)];
-    navigate(`/post/${randomPost.id}`);
+    navigate(`/post/${randomPost.id}`);//프론트 라우팅으로 랜덤 게시물 페이지 이동
   };
 
   const handleSort = (type) => {
