@@ -1,16 +1,32 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import BottomNav from '../components/common/BottomNav';
 import Toggle from "../components/common/Toggle";
 import Button from "../components/common/Button";
 import { MoonIcon, MusicalNoteIcon, SunIcon } from '@heroicons/react/24/outline';
 import "../styles/SettingPage.css"
 
-const SettingPage = () => {
-  // 더미 데이터 값 -> 백엔드와 연결 후 변경
-  const user ={
-    name: '홍길동',
-    characterImage: '/assets/characters/stone.png'
-  };
+const SettingPage = ({ isMusicPlaying, setIsMusicPlaying }) => {
+    const [user, setUser] = useState({ name: '', characterImage: null });
+
+    // 음악 토글의 시각적 상태를 관리하는 state
+    const [isMusicToggleOn, setIsMusicToggleOn] = useState(false);
+
+    useEffect(() => {
+        const profile = JSON.parse(localStorage.getItem("profile"));
+        if (profile) {
+            setUser({
+                name: profile.nickname || '익명',
+                characterImage: profile.characterImgUrl || '/assets/characters/stone.png'
+            });
+        }
+        setIsMusicToggleOn(isMusicPlaying);
+    }, [isMusicPlaying]);
+
+    const handleBackgroundMusicToggle = (newToggleState) => {
+        // 토글의 시각적 상태가 변경되면 isMusicPlaying 상태를 반대로 설정
+        setIsMusicPlaying(newToggleState);
+        setIsMusicToggleOn(newToggleState); // 로컬 상태 업데이트
+    };
 
   return (
     <div className='setting-page'>
@@ -33,7 +49,7 @@ const SettingPage = () => {
         <div className='option-item'>
           <MusicalNoteIcon className='icon' />
           <span>배경음악</span>
-          <Toggle/>
+          <Toggle onToggle={handleBackgroundMusicToggle} isOn={isMusicToggleOn}/>
         </div>
 
         <div className='option-item option-night'>
@@ -45,12 +61,10 @@ const SettingPage = () => {
         </div>
       </div>
 
-      {/*alert문은 백엔드와 연결하고 console.log로 수정하기*/}
       <div className='button-group'>
-        <Button text='수정'  className="setting-button" onClick={() => alert("수정 버튼을 클릭하였습니다")}/>
-        <Button text="저장"  className="setting-button" onClick={() => alert("저장 버튼을 클릭하였습니다")}/>
+        <Button text='수정'  className="setting-button" onClick={() => console.log("수정 버튼을 클릭하였습니다")}/>
+        <Button text="저장"  className="setting-button" onClick={() => console.log("저장 버튼을 클릭하였습니다")}/>
       </div>
-      
       <BottomNav/>
     </div>
   )
