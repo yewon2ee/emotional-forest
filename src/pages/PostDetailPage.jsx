@@ -40,8 +40,8 @@ const PostDetailPage = () => {
 
   if (!post) return <div>해당 글을 찾을 수 없습니다.</div>;
 
-  const handleLike = () => alert("Like 버튼 누름");
-  const handleCheer = () => alert("Cheer 버튼 누름");
+  const handleLike = () => console.log("Like 버튼 누름");
+  const handleCheer = () => console.log("Cheer 버튼 누름");
 
   return (
     <div className='post-detail-page'>
