@@ -4,13 +4,6 @@ import '../styles/ProfileSettingPage.css';
 import '../styles/NicknameSettingPage.css';
 import instance from '../api/instance'; // axios instance import
 
-// 로컬에서 캐릭터 정보 불러오기
-// → 닉네임 입력
-// → 백엔드에 회원가입 POST 요청
-// → user_id 받아서 로컬 profile 업데이트
-// → 홈으로 이동
-
-
 const NicknameSettingPage = () => {
   const navigate = useNavigate();
   const [nickname, setNickname] = useState("");
@@ -32,26 +25,33 @@ const NicknameSettingPage = () => {
 
     const profile = JSON.parse(localStorage.getItem("profile")) || {};
 
-    // POST 요청 데이터 준비
     const data = {
       name: nickname,
       profile_character_id: profile.characterId,
     };
 
     try {
-      const response = await instance.post("/users/signup", data); // 실제 endpoint로 수정
+      const response = await instance.post("/users/signup", data);
 
-      console.log("등록 성공:", response.data);
+      console.log("🔍 전체 응답:", response);
+      console.log("🔍 response.data:", response.data);
+      console.log("🔍 response.data.data:", response.data?.data);
 
-      // 로컬스토리지에 nickname 추가 저장
+      const userId = response.data?.user_id;
+
+      if (!userId) {
+        throw new Error("응답에서 user_id를 찾을 수 없습니다.");
+      }
+
+      // 로컬스토리지에 nickname, userId 저장
       profile.nickname = nickname;
-      profile.userId = response.data.data.user_id; // 백에서 받은 user_id 저장
+      profile.userId = userId;
       localStorage.setItem("profile", JSON.stringify(profile));
 
       alert("프로필이 생성되었습니다! 이제 감정의 숲을 즐겨보세요 🌳");
       navigate("/home");
     } catch (error) {
-      console.error("등록 실패:", error);
+      console.error("❌ 등록 실패:", error);
       alert("오류가 발생했습니다. 다시 시도해주세요.");
     }
   };

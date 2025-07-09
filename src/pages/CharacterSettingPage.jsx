@@ -21,17 +21,7 @@ const CharacterSettingPage = () => {
       }
     };
 
-    const testBackendConnection = async () => {
-      try {
-        const res = await instance.get("/users/signup/characters");
-        console.log("백엔드 연결 테스트 성공:", res.data);
-      } catch (error) {
-        console.error("백엔드 연결 테스트 실패:", error);
-      }
-    };
-
     fetchCharacters();
-    testBackendConnection();
   }, []);
 
   const handleSelectCharacter = (id) => {
@@ -39,32 +29,24 @@ const CharacterSettingPage = () => {
     console.log("선택된 캐릭터 id:", id);
   };
 
-  const handleSave = async () => {
+  const handleSave = () => {
     if (!selectedCharacter) {
       alert("캐릭터를 선택해주세요!");
       return;
     }
 
-    try {
-      const body = { profile_character_id: selectedCharacter };
-      const response = await instance.patch("/users/signup/characters", body);
-      console.log("캐릭터 선택 PATCH 성공:", response.data);
+    const profile = JSON.parse(localStorage.getItem("profile")) || {};
+    profile.characterId = selectedCharacter;
 
-      const profile = JSON.parse(localStorage.getItem("profile")) || {};
-      profile.characterId = selectedCharacter;
-
-      const selectedChar = characters.find(c => c.character_id === selectedCharacter);
-      if (selectedChar) {
-        profile.characterImgUrl = selectedChar.image_url;
-      }
-
-      localStorage.setItem("profile", JSON.stringify(profile));
-      navigate("/profile/nickname");
-
-    } catch (error) {
-      console.error("캐릭터 선택 PATCH 실패:", error);
-      alert("캐릭터 저장에 실패했습니다. 다시 시도해주세요.");
+    const selectedChar = characters.find(c => c.character_id === selectedCharacter);
+    if (selectedChar) {
+      profile.characterImgUrl = selectedChar.image_url;
     }
+
+    localStorage.setItem("profile", JSON.stringify(profile));
+    console.log("로컬스토리지에 캐릭터 저장 완료:", profile);
+
+    navigate("/profile/nickname");
   };
 
   return (
