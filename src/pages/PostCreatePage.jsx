@@ -15,6 +15,14 @@ const PostCreatePage = () => {
     const fetchTree = async () => {
       console.log("🌳 fetchTree 실행됨");
 
+      const userId = localStorage.getItem("userId");
+
+      if (!userId) {
+        alert("로그인 정보가 없습니다. 다시 시도해주세요.");
+        navigate("/");
+        return;
+      }
+  
       try {
         const res = await axios.get('/trees/');
         console.log("✅ 글쓰기용 트리 조회 성공:", res.data);
@@ -46,6 +54,8 @@ const PostCreatePage = () => {
       return;
     }
 
+    const userId = localStorage.getItem("userId");
+
     const postData = {
       tree_id: treeData.tree_id,
       content: content,
@@ -57,7 +67,11 @@ const PostCreatePage = () => {
     console.log("📝 저장 요청 데이터:", postData);
 
     try {
-      const res = await axios.post("/posts/posts", postData);
+      const res = await axios.post("/posts/posts", postData, {
+        headers: {
+          "X-USER-ID": userId,
+        },
+      });
       console.log("✅ 저장 성공:", res.data);
       alert("저장되었습니다!");
       navigate("/tree");
@@ -103,8 +117,6 @@ const PostCreatePage = () => {
       <BottomNav />
     </div>
   );
-  
- 
 };
 
 export default PostCreatePage;

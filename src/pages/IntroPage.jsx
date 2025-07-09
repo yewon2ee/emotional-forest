@@ -2,10 +2,17 @@ import React from "react";
 import "../styles/IntroPage.css";
 import { useNavigate } from "react-router-dom";
 
-const IntroPage = () => {
+const IntroPage = ({ setIsMusicPlaying }) => {
   const navigate = useNavigate();
 
-  const handleStartClick = () => {
+    const handleStartClick = () => {
+        console.log('시작하기 버튼 클릭됨');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        if (backgroundMusic) {
+            backgroundMusic.play().catch(error => console.error("음악 재생 오류:", error));
+        }
+        setIsMusicPlaying(true); // 음악 상태를 true로 변경
+
     const userId = localStorage.getItem("userId");
 
     if (!userId) {
@@ -32,6 +39,7 @@ const IntroPage = () => {
           시작하기
         </button>
       </div>
+      <audio id="backgroundMusic" src="/background_music.mp3" loop style={{ display: 'none' }} />
     </div>
   );
 };
