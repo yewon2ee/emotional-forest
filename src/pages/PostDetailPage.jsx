@@ -1,42 +1,51 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import PostContent from '../components/post/PostContent';
 import ReactionButtons from '../components/post/ReactionButtons';
 import BottomNav from "../components/common/BottomNav";
 import Header from '../components/common/Header';
+import axios from "../api/instance";
 import "../styles/PostDetailPage.css";
-
-const dummyPosts = [
-  { id: 1, 
-    content: "나는 오늘 개발만 했다", 
-    likes: 3, 
-    date: "2025-07-07",
-    nickname: "돌맹이",
-    location: "인하대학교",
-    characterImage: "/assets/characters/stone.png"
-  },
-  { id: 2, 
-    content: "해커톤을 무사히 끝내고 싶다. 해커톤을 무사히 끝내고 싶다. 해커톤을 무사히 끝내고 싶다.", 
-    likes: 10, 
-    date: "2025-07-05",
-    nickname: "돌덩이",
-    location: "인하대학교 하이테크",
-    characterImage: "/assets/characters/stone.png"
-  },
-  { id: 3, 
-    content: "끝나면 진짜 방학을 즐겨야지", 
-    likes: 5, 
-    date: "2025-07-06",
-    nickname: "돌맹",
-    location: "인하대학교 5호관",
-    characterImage: "/assets/characters/stone.png"
-  }
-];
 
 const PostDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const post = dummyPosts.find(p => p.id === parseInt(id));
+  const [post, setPost] = useState(null);
+
+  // 로컬에서 닉네임과 위치 불러오게함
+  const profile = JSON.parse(localStorage.getItem("profile")) || {};
+  const nickname = profile.nickname || "알 수 없음";
+  const location = "인하대학교"; //위치는 고정으로 해둠
+
+  const fetchPostDetail = async () => {
+    try {
+      const res = await axios.get (`/posts/posts/${id}`);
+      console.log("글 상세 조회 성공:", res.data);
+
+      const mappedPost = {
+        id: res.data.post_id,
+        content: res.data.content,
+        likes: res.data.like_count,
+        cheers: res.data.cheer_count,
+        date: new Date(res.data.created_at).toLocaleDateString(), //포맷팅 해줘야함 예를 들어 2025-07-07 처럼 보여지기 위해서 
+        /*
+        nickname: `User ${res.data.user_id}`, //닉네임이 없어서 id 값으로 대체
+        location: "인하대학교", //명세서에 위치가 없어서 임의로 고정
+        */
+        characterImage: res.data.profile_character
+      };
+
+      setPost(mappedPost);
+    } catch (err) {
+      console.error("상세 글 조회 실패:", err);
+    }
+  };
+
+  //useEffect : 렌더링 후 백엔드에서 데이터 가져오게 함
+  // 의존성 배열에 id 값을 넣음 -> 값이 바뀔때마다 useEffect 다시 실행
+  useEffect(() =>{
+    fetchPostDetail();
+  }, [id]);
 
   if (!post) return <div>해당 글을 찾을 수 없습니다.</div>;
 
@@ -59,11 +68,11 @@ const PostDetailPage = () => {
       <div className='post-data-area'>
           <span>{post.date}</span>
           <span>📍</span>
-          <span>{post.location}</span>
+          <span>{location}</span>
         </div>
 
       <div className='post-content-area'>
-        <PostContent nickname={post.nickname} content={post.content} />
+        <PostContent nickname={nickname} content={post.content} />
 
         <div className='post-btn'>
           <ReactionButtons onLike={handleLike} onCheer={handleCheer} />
