@@ -2,22 +2,32 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../../styles/TreePage.css';
 
-const LeafList = ({ posts }) => {
-  const navigate = useNavigate(); // navigate 훅 추가
+const LeafList = ({ posts, treeId }) => { //  treeId props 추가
+  const navigate = useNavigate();
+
+  // 해당 트리에 달린 posts만 필터링
+  const filteredPosts = posts.filter(post => post.tree_id === treeId);
 
   return (
     <div className="card-container">
-      <div className="sort-btn"></div>
-      {posts.map(post => (
-        <div 
-          key={post.id} 
-          className="leaf-item"
-          onClick={() => navigate(`/post/${post.id}`)} // 클릭 시 이동
-        >
-          <img src="/assets/fruit/apple.png" alt="leaf" className="leaf-icon"/>
-          <span>{post.content.length > 20 ? post.content.slice(0, 20) + "…" : post.content}</span>
-        </div>
-      ))}
+      {filteredPosts.length === 0 ? (
+        <p>이 트리에 게시물이 없습니다.</p>
+      ) : (
+        filteredPosts.map(post => (
+          <div 
+            key={post.post_id}
+            className="leaf-item"
+            onClick={() => navigate(`/post/${post.post_id}`)}
+          >
+            <img src="/assets/fruit/apple.png" alt="leaf" className="leaf-icon"/>
+            <span>
+              {post.content.length > 20 
+                ? post.content.slice(0, 20) + "…" 
+                : post.content}
+            </span>
+          </div>
+        ))
+      )}
     </div>
   );
 };

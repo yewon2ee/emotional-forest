@@ -1,15 +1,17 @@
-
 .custom-button {
-    background-color: #4CAF50; 
-    color: white;
-    padding: 15px 50px; 
-    border: none; 
-    border-radius: 30px; 
-    font-size: 16px; 
-    cursor: pointer; 
-  }
-  
-  .custom-button:hover {
-    background-color: #45a049; 
-  }
-  
+  background-color: #4CAF50; 
+  color: white;
+  border: none; 
+  border-radius: 30px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px; /* 좌우만 여백, 상하는 버튼 높이로 제어 */
+  height: 40px; /* 기본 높이 설정 */
+}
+
+.custom-button:hover {
+  background-color: #45a049; 
+}
