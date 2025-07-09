@@ -19,7 +19,7 @@ const LeafList = ({ posts, treeId }) => { //  treeId props 추가
             className="leaf-item"
             onClick={() => navigate(`/post/${post.post_id}`)}
           >
-            <img src="/assets/fruit/apple.png" alt="leaf" className="leaf-icon"/>
+            
             <span>
               {post.content.length > 20 
                 ? post.content.slice(0, 20) + "…" 

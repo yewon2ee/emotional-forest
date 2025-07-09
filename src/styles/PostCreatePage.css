@@ -8,12 +8,12 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding-top: 250px;
+  padding-top: 200px;
 }
 
 img.leaf-icon {
   position: absolute;
-  top: 180px;
+  top: 120px;
   width: 100px !important;
   height: auto !important;
 }
@@ -44,20 +44,18 @@ img.leaf-icon {
   flex-direction: column;
   align-items: center;
   margin-top: 30px;
+  margin-bottom: 0;
   min-height: 250px;
   border: none;
 }
 
 
-.footer-combined {
+.toggle-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #f0f0f0; /* 하나의 박스 배경 */
-  border-radius: 20px;
-  padding: 10px 20px;
-  width: 80%;
-  margin: 20px auto 0 auto; /* 위 margin + 중앙정렬 */
+  margin-top: 20px;
+  gap: 10px;
 }
 
 .toggle-combined {
@@ -68,7 +66,7 @@ img.leaf-icon {
 
 .toggle-switch {
   width: 50px;
-  height: 30px; /* 약간 줄여서 균형 */
+  height: 30px;
   background-color: #ccc;
   border-radius: 15px;
   cursor: pointer;
@@ -97,7 +95,15 @@ img.leaf-icon {
 .toggle-text {
   color: grey;
   font-size: 14px;
-  line-height: 30px; /* 높이 맞춤 */
+  line-height:30px;
+  
+}
+
+/* 저장 버튼 영역 */
+.save-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
 }
 
 .post-create-save-btn {
@@ -110,9 +116,15 @@ img.leaf-icon {
   text-align: center;
   border: none;
   cursor: pointer;
-
-  display: flex; /* ✅ 추가 */
-  justify-content: center; /* ✅ 추가 */
-  align-items: center; /* ✅ 추가 */
-  line-height: normal; /* ✅ 불필요한 line-height 초기화 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-buttons-container {
+  display: flex;
+  justify-content: space-between; /* 좌우 끝으로 배치 */
+  align-items: center;
+  width: 95%; /* 적절한 너비 */
+  margin: 30px auto 0 auto;
+  box-sizing: border-box;
 }

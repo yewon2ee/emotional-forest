@@ -17,9 +17,9 @@ const HomePage = () => {
     document.head.appendChild(script);
 
     script.onload = async () => {
-      try {
+      try { 
         //  트리 조회 API 호출
-        const res = await axios.get('/trees');
+        const res = await axios.get('/trees/');
         console.log("트리 조회 성공:", res.data);
 
         const treeData = res.data[0]; // 트리 하나만 있다고 가정
