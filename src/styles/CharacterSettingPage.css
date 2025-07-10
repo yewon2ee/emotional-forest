@@ -1,0 +1,90 @@
+.character-container {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(#dff6ff 50%, #e0ffe0 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 0px;
+    justify-content: center; 
+  }
+  
+  .character-container h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .character-card {
+    background: #fffbe0;
+    width: 75%;
+    height: 480px;
+    border-radius: 20px;
+    padding: 40px 20px;
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+  }
+  
+  .character-card::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+    background: #8b5e3c;
+    border-radius: 2px;
+  }
+  
+  .character-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    justify-items: center; /* 각 아이템을 열 중앙에 */
+    justify-content: center; /* 전체 그리드를 부모 중앙에 */
+    padding: 40px;
+    width: 100%; /* 추가: 전체 카드 폭을 꽉 채움 */
+    box-sizing: border-box; /* 패딩 포함 계산 */
+  }
+  
+  
+  .character-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s, border 0.2s;
+  }
+  
+  .character-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+  }
+  
+  .character-item p {
+    background: #facc15;
+    border-radius: 20px;
+    width: 80px;
+    text-align: center;
+    padding: 2px 8px;
+    font-size: 10px;
+    margin-top: 20px;
+
+  }
+  
+  .character-item.selected img {
+    border: 2px solid green;
+    border-radius: 10px;
+    transform: scale(1.1);
+  }
+  
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 20px;
+  }
+  

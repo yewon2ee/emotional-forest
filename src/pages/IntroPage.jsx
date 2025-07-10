@@ -1,37 +1,45 @@
 import React from "react";
-import Button from "../components/common/Button";
-import Toggle from "../components/common/Toggle";
+import "../styles/IntroPage.css";
+import { useNavigate } from "react-router-dom";
 
-const IntroPage = () => {
 
-   // 클릭 시 실행되는 테스트 함수
-   const handleClick = () => {
-    alert("버튼이 클릭되었습니다!");
-  };
+const IntroPage = ({ setIsMusicPlaying, audio }) => {
 
-  const handleToggle = (state) => {
-    console.log('현재 토글 상태:',state);
+
+  const navigate = useNavigate();
+
+  const handleStartClick = () => {
+    console.log('시작하기 버튼 클릭됨');
+    if (audio) {
+      audio.play().catch(error => console.error("음악 재생 오류:", error));
+      setIsMusicPlaying(true);
+    }
+
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      console.log("회원정보 없음 → 캐릭터 세팅 페이지로 이동");
+      navigate("/profile/character");
+    } else {
+      console.log("회원정보 있음 → 홈으로 이동");
+      navigate("/home");
+    }
   };
 
   return (
-    <div>
-      <h1>IntroPage</h1>
-
-      {/* 버튼 테스트 */}
-      <Button 
-        text="테스트 버튼" 
-        onClick={handleClick}
-      />
-      <div><p>""</p></div>
-
-      {/*토글 테스트*/}
-      <Toggle
-        onToggle={handleToggle}/>
-
-
+    <div className="intro-container">
+      <div className="overlay">
+        <img src="/assets/logo/logo.png" alt="로고" className="intro-logo" />
+        <p className="intro-subtitle">
+          공간 위에 남겨진
+          <br />
+          감정의 발자국
+        </p>
+        <button className="start-btn" onClick={handleStartClick}>
+          시작하기
+        </button>
+      </div>
     </div>
   );
-
 };
 
 export default IntroPage;

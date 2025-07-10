@@ -1,27 +1,40 @@
-// 좋아요 / cheer 리액션 버튼
 import React, {useState} from 'react';
+import { FaThumbsUp, FaRegSmile } from 'react-icons/fa';
 
 const ReactionButtons = ({ onLike, onCheer }) => {
     // 각 버튼의 상태를 useState로 관리 
     const [likes, setLikes] = useState(0);
     const [cheers, setCheers] = useState(0);
-  
-    const handleLike = () => {
+
+    const [liked, setLiked] = useState(false);
+    const [cheered, setCheered] = useState(false);
+
+  const handleLike = () => {
+    if (!liked) {
       setLikes(likes + 1);
-      onLike(); // 부모에게도 알림
-    };
-  
-    const handleCheer = () => {
+      onLike?.();
+    } else {
+      setLikes(likes - 1);
+    }
+    setLiked(!liked);
+  };
+
+  const handleCheer = () => {
+    if (!cheered) {
       setCheers(cheers + 1);
-      onCheer(); // 부모에게도 알림
-    };
-  
-    return (
-      <div className="reaction-buttons">
-        <button onClick={handleLike}>👍 {likes}</button>
-        <button onClick={handleCheer}>💙 {cheers}</button>
-      </div>
-    );
+      onCheer?.();
+    } else {
+      setCheers(cheers - 1);
+    }
+    setCheered(!cheered);
   };
   
-  export default ReactionButtons;
+  return (
+    <div className="reaction-buttons">
+      <button onClick={handleLike}><FaThumbsUp /> LIKE {likes}</button>
+      <button onClick={handleCheer}><FaRegSmile /> CHEER {cheers}</button>
+    </div>
+  );
+};
+
+export default ReactionButtons;

@@ -1,0 +1,102 @@
+/* 추가: 전체 가로 스크롤 방지 */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.mypage {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  background: linear-gradient(#dff6ff 40%, #e0ffe0 60%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* 세로 가운데 정렬 */
+  margin: 0 auto;
+}
+
+.header-title {
+  font-size: 36px;
+  text-align: center;
+  margin: 60px 0;
+  color: #265558;
+}
+
+.island-area {
+  position: relative;
+  width: 300px;
+  height: 250px;
+  margin: 20px auto; /* 중앙 정렬 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.island-img {
+  width: 100%;
+  display: block;
+  margin-bottom: -70px;
+}
+
+.tree-img {
+  position: absolute;
+  width: 100px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.tree-img:hover {
+  outline: 3px solid #5bc060;
+  outline-offset: -3px; /* 이미지와 딱 맞게 */
+}
+
+/* 트리 위치 수정: percent + transform으로 중앙 기준 배치 */
+.tree-pos-1 {
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.tree-pos-2 {
+  top: 30px;
+  left: 75%;
+  transform: translateX(-50%);
+}
+
+.tree-pos-3 {
+  top: 30px;
+  left: 25%;
+  transform: translateX(-50%);
+}
+
+.tree-pos-4 {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.stat-area {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  margin-top: 50px;
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats-number {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.stats-text {
+  font-size: 12px;
+  margin-top: 10px;
+}

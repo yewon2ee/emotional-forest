@@ -1,28 +1,32 @@
 .toggle-switch {
-    width: 50px;
-    height: 25px;
-    background-color: #ccc;
-    border-radius: 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    padding: 3px;
-    transition: background-color 0.3s;
-  }
-  
-  .toggle-switch.on {
-    background-color: #4CAF50;
-  }
-  
-  .toggle-knob {
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-radius: 50%;
-    transition: transform 0.3s;
-  }
-  
-  .toggle-switch.on .toggle-knob {
-    transform: translateX(25px);
-  }
-  
+  width: 50px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  transition: background-color 0.3s;
+}
+
+.toggle-switch.on {
+  background-color: #4CAF50;
+}
+
+.toggle-knob {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle-switch.on .toggle-knob {
+  transform: translateX(20px);
+}
+
+.toggle-text {
+  color: grey;
+  font-size: 14px;
+}

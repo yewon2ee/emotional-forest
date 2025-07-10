@@ -1,0 +1,81 @@
+.tree-page {
+  position: relative;
+  background: linear-gradient(#dff6ff 25%, #e0ffe0 75%);
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 트리 컨테이너 */
+.tree-container {
+  position: relative;
+  width: 200px;
+  margin-top: 40px; /* 트리 상단 여백 조절 */
+}
+
+.tree {
+  width: 100%;
+  display: block;
+}
+
+.apple {
+  position: absolute;
+  width: 40px;
+}
+
+/* 사과 위치 (목업처럼) */
+.apple1 { top: 20px; left: 80px; }
+.apple2 { top: 80px; left: 30px; }
+.apple3 { top: 80px; left: 130px; }
+
+/* 정렬 버튼 */
+.sort-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 16px 0 40px 0; /* 버튼과 리스트 사이 좁히기 */
+}
+
+.sort-buttons button {
+  background-color: #68c97b;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+
+.leaf-list-container {
+  background-color: #d9d9d9;
+  border-radius: 24px 24px 0 0;
+  padding: 16px;
+  flex-grow: 1; /* 남은 영역 모두 차지 */
+  width: 100%;
+  overflow-y: auto; /* 내부 스크롤 */
+  max-height: 400px; /* (선택) 스크롤 영역 높이 제한 */
+}
+
+/* 개별 리스트 아이템 */
+.leaf-item {
+  display: flex;
+  align-items: center;
+  background-color: #fff9e6;
+  border-radius: 20px;
+  padding: 8px;
+  margin-bottom: 8px;
+  font-size: 14px; /* 폰트 크기 줄임 */
+  
+  cursor: pointer; /* 클릭 가능한 영역 표시 */
+  transition: border 0.2s; /* 테두리 전환 효과 */
+  border: 2px solid transparent; /* 기본 투명 테두리 */
+}
+
+.leaf-item:active {
+  border: 2px solid #68c97b; /* 클릭 시 연두색 테두리 나타남 */
+}
+.leaf-icon {
+  width: 20px;
+  margin-right: 10px;
+}

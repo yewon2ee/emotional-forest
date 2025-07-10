@@ -1,94 +1,77 @@
-import React , {useState} from 'react';
-import CharacterGrid from '../components/character/CharacterGrid';
-import "../styles/CharacterGrid.css";
-
+import React, { useState, useEffect } from 'react';
+import "../styles/CharacterSettingPage.css";
+import { useNavigate } from 'react-router-dom';
+import instance from "../api/instance";
 
 const CharacterSettingPage = () => {
-  //선택된 캐릭터 관리
-  const [selectedCharacter , setSelectedCharacter] = useState(null);
+  const navigate = useNavigate();
 
-  //예시 캐릭터 리스트
-  const character = [
-    {
-      id: 1,
-      image: "/assets/characters/cat.png",
-      name: "마동석냥이",
-    },
-    {
-      id: 2,
-      image: "/assets/characters/forest_keeper.png",
-      name: "행복한 숲지기",
-    },
-    {
-      id: 3,
-      image: "/assets/characters/ginseng.png",
-      name: "행복을 나누는 인삼",
-    },
-    {
-      id: 4,
-      image: "/assets/characters/happy_beginner.png",
-      name: "행복한 뉴비",
-    },
-    {
-      id: 5,
-      image: "/assets/characters/kind_golem.png",
-      name: "친절한 골렘",
-    },
-    {
-      id: 6,
-      image: "/assets/characters/running_person.png",
-      name: "뛰어다니는 사람",
-    },
-    {
-      id: 7,
-      image: "/assets/characters/shark.png",
-      name: "서있는 상어",
-    },
-    {
-      id: 8,
-      image: "/assets/characters/stone.png",
-      name: "그냥 돌멩이",
-    },
-    {
-      id: 9,
-      image: "/assets/characters/magician.png",
-      name: "츤데레 숲마법사",
-    }
-  ]
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [characters, setCharacters] = useState([]); //  빈 배열로 초기화
 
-  //캐릭터 선택 시 실횅될 함수
+  useEffect(() => {
+    const fetchCharacters = async () => {
+      try {
+        const response = await instance.get("/users/signup/characters");
+        console.log("캐릭터 목록 GET 성공:", response.data);
+        setCharacters(response.data || []); // 응답 없을 시 빈 배열
+      } catch (error) {
+        console.error("캐릭터 목록 GET 실패:", error);
+        alert("캐릭터 목록을 불러오지 못했습니다.");
+        setCharacters([]); // 실패 시도 빈 배열
+      }
+    };
+
+    fetchCharacters();
+  }, []);
+
   const handleSelectCharacter = (id) => {
-      setSelectedCharacter(id);
-      //브라우저개발자도구 콘솔에 값 출력하는 함수 - cout 해보면서 체크하는 느낌인듯하당
-      console.log("선택된 캐릭터 id:",id);
-  }
+    setSelectedCharacter(id);
+    console.log("선택된 캐릭터 id:", id);
+  };
 
+  const handleSave = () => {
+    if (!selectedCharacter) {
+      alert("캐릭터를 선택해주세요!");
+      return;
+    }
 
+    const profile = JSON.parse(localStorage.getItem("profile")) || {};
+
+    const selectedChar = characters.find(c => c.character_id === selectedCharacter);
+
+    const newProfile = {
+      ...profile,
+      characterId: selectedCharacter,
+      characterImgUrl: selectedChar ? selectedChar.image_url : profile.characterImgUrl,
+    };
+
+    localStorage.setItem("profile", JSON.stringify(newProfile));
+    console.log("로컬스토리지에 캐릭터 저장 완료:", newProfile);
+
+    navigate("/profile/nickname");
+  };
   return (
-    <div className="character-setting-page">
-      <h2>캐릭터를 선택해보자!</h2>
-
-      {/* 캐릭터 선택 그리드  */}
-      <CharacterGrid
-        characters={character}
-        selectedCharacter={selectedCharacter}
-        onSelect={handleSelectCharacter}
-      />
-
-
-      {/* 임시 버튼: 선택된 캐릭터 콘솔 확인 */}
-      <button
-        onClick={() =>
-          console.log(
-            "현재 선택된 캐릭터:",
-            characters.find((char) => char.id === selectedCharacter)
-          )
-        }
-      >
-        선택된 캐릭터 확인 
-      </button>
-      <h3>프로필 아이콘 미리보기는 안넣엇음 아직. 안할거같아서 선택한 카드 id 로그 잘찍힘 </h3>
+    <div className="character-container">
+      <h2>🌿 캐릭터 설정</h2>
+      <div className="character-card">
+        <div className="character-grid">
+          {characters.map((char) => (
+            <div
+              key={char.character_id}
+              className={`character-item ${selectedCharacter === char.character_id ? "selected" : ""}`}
+              onClick={() => handleSelectCharacter(char.character_id)}
+            >
+              <img src={char.image_url} alt={char.name} />
+              <p>{char.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <button onClick={handleSave}>저장하기</button>
     </div>
-  )
-} 
+  );
+ 
+};
+
 export default CharacterSettingPage;

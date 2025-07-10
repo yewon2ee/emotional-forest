@@ -1,28 +1,39 @@
 .header-wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start; /* 상단으로 붙임 */
+  position: absolute; /* 상단 고정 */
+  top: 12px; /* 상단 여백 */
+  left: 0;
+  right: 0;
+  padding: 0 16px;
+  z-index: 10;
 }
 
 .header-back-btn,
 .header-edit-btn {
-  width: 48px;
+  width: 48px; /* 버튼 크기 키움 */
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+/*
 .header-title {
-  text-align: center;
+  display: none; /* 타이틀 숨김 (필요하면 유지) 
 }
+  */
 
 .header-btn {
   background: lightgreen;
   border: none;
+  border-radius: 12px;
+  padding: 8px;
 }
 
 .back-icon,
 .pencil-icon {
-  width: 20px;
+  width: 24px; /* 아이콘 크기 키움 */
   color: white;
 }

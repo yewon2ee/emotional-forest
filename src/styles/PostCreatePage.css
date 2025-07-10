@@ -1,0 +1,130 @@
+.post-create-page {
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  background: linear-gradient(#dff6ff 25%, #e0ffe0 75%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-top: 200px;
+}
+
+img.leaf-icon {
+  position: absolute;
+  top: 120px;
+  width: 100px !important;
+  height: auto !important;
+}
+
+.create-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.create-date-area {
+  margin-top: 20px;
+  padding: 8px 20px;
+  background-color: #dddddd;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.content-input {
+  background-color: #FEFCE7;
+  padding: 30px;
+  border-radius: 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  margin-bottom: 0;
+  min-height: 250px;
+  border: none;
+}
+
+
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.toggle-combined {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-switch {
+  width: 50px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  transition: background-color 0.3s;
+}
+
+.toggle-switch.on {
+  background-color: #4CAF50;
+}
+
+.toggle-knob {
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+.toggle-switch.on .toggle-knob {
+  transform: translateX(20px);
+}
+
+.toggle-text {
+  color: grey;
+  font-size: 14px;
+  line-height:30px;
+  
+}
+
+/* 저장 버튼 영역 */
+.save-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+.post-create-save-btn {
+  background-color: #00A000;
+  color: white;
+  font-size: 14px;
+  width: 80px;
+  height: 35px;
+  border-radius: 20px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-buttons-container {
+  display: flex;
+  justify-content: space-between; /* 좌우 끝으로 배치 */
+  align-items: center;
+  width: 95%; /* 적절한 너비 */
+  margin: 10px auto 0 auto;
+  box-sizing: border-box;
+}
