@@ -79,8 +79,6 @@ const PostDetailPage = () => {
       <div className="reaction-buttons">
         <button onClick={handleLike} disabled={liked}>LIKE {post.like_count}</button>
 
-          <Clover size={20} color="#fff" weight="light" />
-
         <button onClick={handleCheer} disabled={cheered}>CHEER {post.cheer_count}</button>
       </div>
     </div>
