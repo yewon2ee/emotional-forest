@@ -1,59 +1,59 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
 import BottomNav from '../components/common/BottomNav';
-import Toggle from "../components/common/Toggle";
-import Button from "../components/common/Button";
-import { MoonIcon, MusicalNoteIcon, SunIcon } from '@heroicons/react/24/outline';
-import "../styles/SettingPage.css"
+import { PlayIcon, PauseIcon,ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
+import "../styles/SettingPage.css";
 
-const SettingPage = ({ isMusicPlaying, setIsMusicPlaying }) => {
-    const [user, setUser] = useState({ name: '', characterImage: null });
+const SettingPage = ({ isMusicPlaying, setIsMusicPlaying, audio }) => {
+  const [user, setUser] = useState({ name: '', characterImage: null });
 
-    // 음악 토글의 시각적 상태를 관리하는 state
-    const [isMusicToggleOn, setIsMusicToggleOn] = useState(false);
+  useEffect(() => {
+    const profile = JSON.parse(localStorage.getItem("profile"));
+    if (profile) {
+      setUser({
+        name: profile.nickname || '익명',
+        characterImage: profile.characterImgUrl || '/assets/characters/stone.png'
+      });
+    }
+  }, []);
 
-    useEffect(() => {
-        const profile = JSON.parse(localStorage.getItem("profile"));
-        if (profile) {
-            setUser({
-                name: profile.nickname || '익명',
-                characterImage: profile.characterImgUrl || '/assets/characters/stone.png'
-            });
-        }
-        setIsMusicToggleOn(isMusicPlaying);
-    }, [isMusicPlaying]);
-
-    const handleBackgroundMusicToggle = (newToggleState) => {
-        // 토글의 시각적 상태가 변경되면 isMusicPlaying 상태를 반대로 설정
-        setIsMusicPlaying(newToggleState);
-        setIsMusicToggleOn(newToggleState); // 로컬 상태 업데이트
-    };
+  const handleMusicToggle = () => {
+    if (audio) {
+      if (isMusicPlaying) {
+        audio.pause();
+        setIsMusicPlaying(false);
+      } else {
+        audio.play().catch(error => console.error("음악 재생 오류:", error));
+        setIsMusicPlaying(true);
+      }
+    }
+  };
 
   return (
     <div className='setting-page'>
       <div className='user-info'>
         <img
-          src = {user.characterImage}
+          src={user.characterImage}
           alt='캐릭터 이미지'
           className='character-img'
         />
         <p className='user-name'>{user.name}</p>
       </div>
 
-      <div className='setting-option'>
-        <div className='option-item'>
-          <MusicalNoteIcon className='icon' />
-          <span>배경음악</span>
-          <Toggle onToggle={handleBackgroundMusicToggle} isOn={isMusicToggleOn}/>
+      <div className="music-card">
+        <div className="music-controller">
+        <ChevronLeftIcon className="music-icon side-button" /> {/* 왼쪽 화살표 */}
+          {isMusicPlaying ? (
+            <PauseIcon className="music-icon play-button" onClick={handleMusicToggle} />
+          ) : (
+            <PlayIcon className="music-icon play-button" onClick={handleMusicToggle} />
+          )}
+          <ChevronRightIcon className="music-icon side-button" /> {/* 오른쪽 화살표 */}
         </div>
       </div>
-      
-      <div className='button-group'>
-        <Button text='수정'  className="setting-button" onClick={() => console.log("수정 버튼을 클릭하였습니다")}/>
-        <Button text="저장"  className="setting-button" onClick={() => console.log("저장 버튼을 클릭하였습니다")}/>
-      </div>
-      <BottomNav/>
+
+      <BottomNav />
     </div>
-  )
-}
+  );
+};
 
 export default SettingPage;
