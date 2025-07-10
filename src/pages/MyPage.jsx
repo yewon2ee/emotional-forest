@@ -76,26 +76,25 @@ const MyPage = () => {
 
       <div className='island-area'>
         <img src='/assets/etc/grass.png' alt="잔디섬" className='island-img' />
-                {[0,1,2,3].map((_, index) => {
-                  const postId = myPosts[index];
+          {[0,1,2,3].map((_, index) => {
+            const postId = myPosts[index];
 
-                  return(
-                    <img
-                        key={index} 
-                        src={treeImages[index % treeImages.length]}
-                        alt={`tree-${index}`}
-                        className={`tree-img ${treePositions[index % treePositions.length]}`}
-                        onClick={() => {
-                          if (postId) {
-                            handleTreeClick(postId);
-                          }
-                          else{
-                            alert("글을 작성해보세요");
-                          }
-                        }}
-                    />  
-                  );
-                    
+            return(
+              <img
+                key={index} 
+                src={treeImages[index % treeImages.length]}
+                alt={`tree-${index}`}
+                className={`tree-img ${treePositions[index % treePositions.length]}`}
+                onClick={() => {
+                if (postId) {
+                  handleTreeClick(postId);
+                }
+                else{
+                  alert("글을 작성해보세요");
+                }
+                }}
+              />  
+            );                
 })}
       </div>
       <div className='stat-area'>
@@ -112,7 +111,6 @@ const MyPage = () => {
           <p className='stats-text'>total cheer count</p>
         </div>
       </div>
-
       <BottomNav />
     </div>
   )

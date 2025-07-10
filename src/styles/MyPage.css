@@ -38,12 +38,12 @@ html, body {
 .island-img {
   width: 100%;
   display: block;
-  margin-bottom: 80px;
+  margin-bottom: -70px;
 }
 
 .tree-img {
   position: absolute;
-  width: 90px;;
+  width: 100px;
   cursor: pointer;
   transition: transform 0.2s;
 }
@@ -53,28 +53,26 @@ html, body {
   outline-offset: -3px; /* 이미지와 딱 맞게 */
 }
 
-
 /* 트리 위치 수정: percent + transform으로 중앙 기준 배치 */
 .tree-pos-1 {
-  top: -85px;
+  top: -25px;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .tree-pos-2 {
-  top: -25px;
+  top: 30px;
   left: 75%;
   transform: translateX(-50%);
 }
 
 .tree-pos-3 {
-  top: -25px;
+  top: 30px;
   left: 25%;
   transform: translateX(-50%);
 }
 
 .tree-pos-4 {
-  top: 0px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -84,7 +82,7 @@ html, body {
   justify-content: space-around;
   align-items: center;
   width: 90%;
-  margin-top: 0px;
+  margin-top: 50px;
 }
 
 .stat-block {
@@ -100,4 +98,5 @@ html, body {
 
 .stats-text {
   font-size: 12px;
+  margin-top: 10px;
 }
