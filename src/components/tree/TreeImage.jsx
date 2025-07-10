@@ -4,7 +4,7 @@ import tree from '/assets/tree_objects/summer.png';
 import apple from '/assets/fruit/apple.png';
 
 const TreeImage = ({ onAppleClick, treeId, latitude, longitude }) => {
-  // 🔧 props 확인용 console.log
+  // props 확인용 console.log
   console.log("TreeImage props:", { treeId, latitude, longitude });
 
   return (

@@ -13,7 +13,7 @@ const PostCreatePage = () => {
 
   useEffect(() => {
     const fetchTree = async () => {
-      console.log("🌳 fetchTree 실행됨");
+      console.log(" fetchTree 실행됨");
 
       const userId = localStorage.getItem("userId");
 
@@ -25,19 +25,19 @@ const PostCreatePage = () => {
   
       try {
         const res = await axios.get('/trees/');
-        console.log("✅ 글쓰기용 트리 조회 성공:", res.data);
+        console.log(" 글쓰기용 트리 조회 성공:", res.data);
 
         if (Array.isArray(res.data) && res.data.length > 0) {
           const tree = res.data[0];
-          console.log("🌳 선택된 tree_id:", tree.tree_id);
+          console.log(" 선택된 tree_id:", tree.tree_id);
           setTreeData(tree);
         } else {
-          console.warn("⚠️ 트리 응답이 배열이 아님 또는 비어있음:", res.data);
+          console.warn(" 트리 응답이 배열이 아님 또는 비어있음:", res.data);
           alert("트리 정보가 없습니다. 다시 시도해주세요.");
           navigate("/tree");
         }
       } catch (err) {
-        console.error("❌ 트리 조회 실패:", err);
+        console.error(" 트리 조회 실패:", err);
         alert("트리 정보를 불러올 수 없습니다.");
         navigate("/tree");
       }
@@ -64,7 +64,7 @@ const PostCreatePage = () => {
       is_private: isPrivate,
     };
 
-    console.log("📝 저장 요청 데이터:", postData);
+    console.log(" 저장 요청 데이터:", postData);
 
     try {
       const res = await axios.post("/posts/posts", postData, {
@@ -72,11 +72,11 @@ const PostCreatePage = () => {
           "X-USER-ID": userId,
         },
       });
-      console.log("✅ 저장 성공:", res.data);
+      console.log(" 저장 성공:", res.data);
       alert("저장되었습니다!");
       navigate("/tree");
     } catch (err) {
-      console.error("❌ 저장 실패:", err.response || err);
+      console.error(" 저장 실패:", err.response || err);
       alert("저장에 실패했습니다. 다시 시도해주세요.");
     }
   };
@@ -98,7 +98,7 @@ const PostCreatePage = () => {
           onChange={(e) => setContent(e.target.value)}
         ></textarea>
   
-        {/* ✅ 토글 + 저장 버튼 한 줄 배치 */}
+        {/*  토글 + 저장 버튼 한 줄 배치 */}
         <div className='footer-buttons-container'>
           <div className='toggle-container'>
             <Toggle onToggle={setIsPrivate} />

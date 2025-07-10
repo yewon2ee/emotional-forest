@@ -125,6 +125,6 @@ img.leaf-icon {
   justify-content: space-between; /* 좌우 끝으로 배치 */
   align-items: center;
   width: 95%; /* 적절한 너비 */
-  margin: 30px auto 0 auto;
+  margin: 10px auto 0 auto;
   box-sizing: border-box;
 }

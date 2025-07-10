@@ -1,26 +1,38 @@
+.profile-container,
+.nickname-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .character-img {
-    width: 150px;
-    margin-top: 100px;
-  }
-  
-  .nickname-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .nickname-input {
-    padding: 8px;
-    border-radius: 1px;
-    border: 1px solid #ccc;
-  }
-  
-  .submit-btn {
-    margin-top: 30px;
-    padding: 10px 20px;
-    background: green;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-  }
-  
+  width: 170px !important; /*  크기 강제 */
+  height: auto !important; /* 비율 유지 */
+  margin-top: 70px;
+  display: block;
+  margin-right: 10px !important;/*  중앙보다 약간 왼쪽으로 */
+}
+
+.nickname-title {
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 25px;
+}
+
+.nickname-input {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  margin-left: 10px !important;
+}
+
+.submit-btn {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}

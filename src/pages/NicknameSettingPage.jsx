@@ -9,7 +9,6 @@ const NicknameSettingPage = () => {
   const [nickname, setNickname] = useState("");
   const [characterImg, setCharacterImg] = useState("");
 
-  // 🚀 페이지 로드 시 로컬스토리지에서 선택된 캐릭터 이미지 불러오기
   useEffect(() => {
     const profile = JSON.parse(localStorage.getItem("profile"));
     if (profile && profile.characterImgUrl) {
@@ -35,15 +34,11 @@ const NicknameSettingPage = () => {
       console.log("✅ 회원가입 응답:", response);
 
       const userId = response.data?.user_id;
-
       if (!userId) {
         throw new Error("응답에서 user_id를 찾을 수 없습니다.");
       }
 
-      // ✅ 1) 최상위에 userId 저장
       localStorage.setItem("userId", userId);
-
-      // ✅ 2) profile 객체에도 nickname, userId 저장 후 덮어쓰기
       profile.nickname = nickname;
       profile.userId = userId;
       localStorage.setItem("profile", JSON.stringify(profile));
@@ -58,7 +53,7 @@ const NicknameSettingPage = () => {
 
   return (
     <div className="profile-container">
-      <h2>🌿 숲 주민 등록</h2>
+      <h2 className="nickname-title">🌿 숲 주민 등록</h2>
       <div className="card nickname-card">
         {characterImg && (
           <img src={characterImg} alt="선택된 캐릭터" className="character-img" />
