@@ -19,6 +19,8 @@ const HomePage = () => {
     script.onload = async () => {
       try { 
         //  트리 조회 API 호출
+        console.log("트리 조회 URL:", import.meta.env.VITE_API_URL + '/trees/');
+
         const res = await axios.get('/trees/');
         console.log("트리 조회 성공:", res.data);
 
