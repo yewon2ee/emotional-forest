@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: "/api",
+  baseURL: import.meta.env.VITE_API_URL, // .env로 설정
 });
 
-// 요청 인터셉터 추가
+// 요청 인터셉터
 instance.interceptors.request.use(
   (config) => {
     const userId = localStorage.getItem("userId");
