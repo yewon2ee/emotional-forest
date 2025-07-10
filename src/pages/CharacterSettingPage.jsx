@@ -7,14 +7,14 @@ const CharacterSettingPage = () => {
   const navigate = useNavigate();
 
   const [selectedCharacter, setSelectedCharacter] = useState(null);
-  const [characters, setCharacters] = useState([]); // ✅ 빈 배열로 초기화
+  const [characters, setCharacters] = useState([]); //  빈 배열로 초기화
 
   useEffect(() => {
     const fetchCharacters = async () => {
       try {
         const response = await instance.get("/users/signup/characters");
         console.log("캐릭터 목록 GET 성공:", response.data);
-        setCharacters(response.data || []); // ✅ 응답 없을 시 빈 배열
+        setCharacters(response.data || []); // 응답 없을 시 빈 배열
       } catch (error) {
         console.error("캐릭터 목록 GET 실패:", error);
         alert("캐릭터 목록을 불러오지 못했습니다.");

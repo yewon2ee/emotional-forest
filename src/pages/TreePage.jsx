@@ -44,7 +44,11 @@ const TreePage = () => {
       });
 
       console.log("✅ 전체 기록 조회 성공:", res.data);
-      setPosts(res.data);
+
+      //  공개 글만 필터링
+      const publicPosts = res.data.filter(post => post.is_private === false);
+      setPosts(publicPosts);
+
     } catch (err) {
       console.error('❌ 전체 기록 조회 실패', err);
       if (err.response) {
@@ -76,7 +80,6 @@ const TreePage = () => {
   
     navigate(`/post/${randomPost.post_id}`);
   };
-  
 
   const handleSort = (type) => {
     let sorted;

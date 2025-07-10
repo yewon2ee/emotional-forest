@@ -7,7 +7,7 @@ export default defineConfig({
     https: false,
     proxy: {
       '/api': {
-        target: 'http://emotioncrossing.p-e.kr',
+        target: 'https://emotioncrossing.p-e.kr',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''),

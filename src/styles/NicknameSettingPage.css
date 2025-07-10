@@ -8,7 +8,7 @@
 .character-img {
   width: 170px !important; /*  크기 강제 */
   height: auto !important; /* 비율 유지 */
-  margin-top: 70px;
+  margin-top: 70px !important;
   display: block;
   margin-right: 10px !important;/*  중앙보다 약간 왼쪽으로 */
 }
@@ -25,6 +25,7 @@
   border-radius: 4px;
   border: 1px solid #ccc;
   margin-left: 10px !important;
+  margin-top: 70px;
 }
 
 .submit-btn {
