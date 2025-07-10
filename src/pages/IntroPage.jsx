@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/IntroPage.css";
 import { useNavigate } from "react-router-dom";
-
 const IntroPage = ({ setIsMusicPlaying }) => {
   const navigate = useNavigate();
 

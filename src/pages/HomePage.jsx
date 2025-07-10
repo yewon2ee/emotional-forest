@@ -67,8 +67,6 @@ const HomePage = () => {
     <div className="home-container">
       <div id="map" className="map"></div>
 
-      {/* 기존 img 제거 (마커로 대체됨) */}
-
       <BottomNav />
     </div>
   );
