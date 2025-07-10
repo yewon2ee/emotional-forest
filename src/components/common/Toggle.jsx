@@ -11,8 +11,6 @@ import '/src/styles/Toggle.css';
 
 const Toggle = (props) => {
   const { onToggle } = props;
-
-
   const [isOn, setIsOn] = useState(false);
 
   // 토글이 클릭될 때 실행될 함수

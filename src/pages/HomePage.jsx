@@ -66,6 +66,7 @@ const HomePage = () => {
   return (
     <div className="home-container">
       <div id="map" className="map"></div>
+
       <BottomNav />
     </div>
          
