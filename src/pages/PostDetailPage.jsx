@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {Clover} from "@phosphor-icons/react";
 import axios from '../api/instance';
 import Header from '../components/common/Header';
 import '../styles/PostDetailPage.css';
@@ -73,12 +72,14 @@ const PostDetailPage = () => {
         
       </div>
       <div className="post-nickname">{post.user_name}</div>
-
       <div className="post-content">{post.content}</div>
 
       <div className="reaction-buttons">
         <button onClick={handleLike} disabled={liked}>LIKE {post.like_count}</button>
+<<<<<<< HEAD
 
+=======
+>>>>>>> f1b7abae5586b403e41d7a517af1c5689af5085d
         <button onClick={handleCheer} disabled={cheered}>CHEER {post.cheer_count}</button>
       </div>
     </div>
