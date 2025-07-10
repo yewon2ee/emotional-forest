@@ -3,6 +3,7 @@ import axios from 'axios';
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_URL, // .env로 설정
 });
+console.log("✅ VITE_API_URL:", import.meta.env.VITE_API_URL);
 
 // 요청 인터셉터
 instance.interceptors.request.use(
