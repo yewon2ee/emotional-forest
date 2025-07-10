@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import {Clover} from "@phosphor-icons/react";
 import axios from '../api/instance';
 import Header from '../components/common/Header';
 import '../styles/PostDetailPage.css';
@@ -77,6 +78,9 @@ const PostDetailPage = () => {
 
       <div className="reaction-buttons">
         <button onClick={handleLike} disabled={liked}>LIKE {post.like_count}</button>
+
+          <Clover size={20} color="#fff" weight="light" />
+
         <button onClick={handleCheer} disabled={cheered}>CHEER {post.cheer_count}</button>
       </div>
     </div>
