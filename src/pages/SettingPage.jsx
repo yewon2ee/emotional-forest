@@ -41,26 +41,12 @@ const SettingPage = ({ isMusicPlaying, setIsMusicPlaying }) => {
 
       <div className='setting-option'>
         <div className='option-item'>
-          <MoonIcon className='icon'/>
-            <span>다크모드</span>
-          <Toggle/>
-        </div>
-
-        <div className='option-item'>
           <MusicalNoteIcon className='icon' />
           <span>배경음악</span>
           <Toggle onToggle={handleBackgroundMusicToggle} isOn={isMusicToggleOn}/>
         </div>
-
-        <div className='option-item option-night'>
-          <SunIcon className='icon'/>
-          <div className='option-night-text'>
-            <span>자동 낮밤</span>
-            <p>시간에 따라 자동으로 모드가 변경 됩니다.</p>
-          </div>
-        </div>
       </div>
-
+      
       <div className='button-group'>
         <Button text='수정'  className="setting-button" onClick={() => console.log("수정 버튼을 클릭하였습니다")}/>
         <Button text="저장"  className="setting-button" onClick={() => console.log("저장 버튼을 클릭하였습니다")}/>

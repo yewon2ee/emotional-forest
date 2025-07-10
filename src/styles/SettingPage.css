@@ -4,7 +4,7 @@
   align-items: center;
   padding: 24px;
   background-color: #D3E0AB;
-  width: 430px;
+  max-width: 430px;
   min-height: 100vh;
   box-sizing: border-box;
   position: relative;
